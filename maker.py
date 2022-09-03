@@ -4,14 +4,15 @@ import random
 import math
 x = 0
 f = open('char.txt',  'x')
-
 typelist = ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma']
 def bkg():
     god = input('Who does your character worship? ')
     f.write(god)
     f.write('\n')
-    
-    bkg = input('Character Background? ')
+    d8 = random.randint(1,8)
+    print(d8)  
+    print('pick the backstory for your race of this number and type it in unless you aren\'t using a new character')
+    bkg = input('Character Background(What your character was)? ')
     f.write(bkg)
     f.write('\n')
     
@@ -75,7 +76,13 @@ def mainstatvet():
         x += 1 
         
 def stats():
-    global new
+    charactername = input('Character Name? ')
+    f.write(charactername)
+    f.write('\n')
+    characterrace = input(f"What is {charactername}'s race? ")
+    f.write(characterrace)
+    f.write('\n') 
+    new = input("Is this a brand new charcter[Y/n] ")
     if new == 'n' or new == 'N':
         lvl = input(f'Level of {charactername}? ')
         mainstatvet()
@@ -94,17 +101,11 @@ def stats():
     f.write(f'Hit Die: {hitdie}')
     f.write('\n')
 
-def init()           
-    charactername = input('Character Name? ')
-    f.write(charactername)
-    f.write('\n')
-    characterrace = input("What is your {charactername}'s race? ")
-    f.write(characterrace)
-    f.write('\n')
- 
-    new = input("Is this a brand new charcter[Y/n] ")
+def init():           
+
     bkg()
     stats()
     spells()
     print("Look for char.txt, rename it before you run it again, otherwise you will get a FileExists error")
+    
 init()
