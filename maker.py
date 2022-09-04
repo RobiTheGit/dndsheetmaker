@@ -5,7 +5,41 @@ import math
 x = 0
 f = open('char.txt',  'x')
 typelist = ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma']
+def traits():
+    z = input('How many traits do you have? ')
+    z = int(z)
+    while int(z) > 0:
+        trait = input('Type in a trait of yours. ')
+        effect = input('What does this trait do? ')
+        
+        desc = input('Write a description of your trait. ')
+        f.write(f'''
+{trait}:
+{effect}
+{desc}        
+        ''')
+        z -= 1
+    
+def weapons():
+    t = input('How many weapons do you have? ')
+    t = int(t)
+    while int(t) > 0:
+        weapon = input('Type in a weapon of yours. ')
+        damage = input('How much damage does it give (ex. 1d12, 18)? ')
+        f.write(f'''
+{weapon}:
+{damage}
+        
+        ''')
+        t -= 1
+    
 def bkg():
+    charactername = input('Character Name? ')
+    f.write(charactername)
+    f.write('\n')
+    characterrace = input(f"What is {charactername}'s race? ")
+    f.write(characterrace)
+    f.write('\n')
     god = input('Who does your character worship? ')
     f.write(god)
     f.write('\n')
@@ -29,7 +63,7 @@ def spells():
         
         desc = input('Write a description for your spell. ')
         f.write(f'''
-{spell}
+{spell}:
 damage: {damage}
 range: {ranges}
 {desc}        
@@ -75,13 +109,7 @@ def mainstatvet():
     ''')
         x += 1 
         
-def stats():
-    charactername = input('Character Name? ')
-    f.write(charactername)
-    f.write('\n')
-    characterrace = input(f"What is {charactername}'s race? ")
-    f.write(characterrace)
-    f.write('\n') 
+def stats(): 
     new = input("Is this a brand new charcter[Y/n] ")
     if new == 'n' or new == 'N':
         lvl = input(f'Level of {charactername}? ')
@@ -106,6 +134,8 @@ def init():
     bkg()
     stats()
     spells()
+    traits()
+    weapons()
     print("Look for char.txt, rename it before you run it again, otherwise you will get a FileExists error")
     
 init()
