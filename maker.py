@@ -32,7 +32,26 @@ def weapons():
         
         ''')
         t -= 1
-    
+def skills():
+    a = input('How many skills do you have? ')
+    a = int(a)
+    while int(a) > 0:
+        skill = input('Type in a skill of yours. ')
+        f.write(f'''
+{skill}
+        
+        ''')
+        a -= 1  
+def items():
+    b = input('How many items do you have? ')
+    b = int(b)
+    while int(b) > 0:
+        item = input('Type in a item of yours. ')
+        f.write(f'''
+{item} x 
+        
+        ''')
+        b -= 1  
 def bkg():
     charactername = input('Character Name? ')
     f.write(charactername)
@@ -132,6 +151,8 @@ def stats():
 def init():           
 
     bkg()
+    skills()
+    items()
     stats()
     spells()
     traits()
