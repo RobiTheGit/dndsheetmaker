@@ -42,13 +42,23 @@ def skills():
         
         ''')
         a -= 1  
+    c = input('How many feats do you have? ')
+    c = int(c)
+    while int(c) > 0:
+        feat = input('Type in a feat of yours. ')
+        bonus = input('What bonuses do you have for this feat? ')
+        f.write(f'''
+{feat}: {bonus}
+        
+        ''')
+        c -= 1 
 def items():
     b = input('How many items do you have? ')
     b = int(b)
     while int(b) > 0:
         item = input('Type in a item of yours. ')
         f.write(f'''
-{item} x 
+{item} x |    |
         
         ''')
         b -= 1  
@@ -106,7 +116,14 @@ def mainstat():
         bonus = sum(list1) 
         mod = math.floor(((int(bonus) - 10)/2))
         total = int(bonus) + int(mod)
-        f.write(f'''
+        if typ == 'Dexterity':
+            f.write(f'''
+{typ} + Initiatve: \n{bonus} + feat bonus |  |
++ {mod}
+({total})    
+    ''')
+        else:
+           f.write(f'''
 {typ}: \n{bonus}
 + {mod}
 ({total})    
@@ -121,10 +138,20 @@ def mainstatvet():
         bonus = input(f'{typ} stat ') 
         mod = input(f'{typ} mod ')
         total = int(bonus) + int(mod)
-        f.write(f'''
+        if typ == 'Dexterity':
+            initb = input('Initiatve Feat Extras')
+        
+        if typ == 'Dexterity':
+           f.write(f'''
+{typ} + Initiatve: {bonus} + feat bonus |{initb}| \n{bonus}
++ {mod}
+({total})    
+    ''')
+        else:
+          f.write(f'''
 {typ}: \n{bonus}
-+ {mod} 
-({total})   
++ {mod}
+({total})    
     ''')
         x += 1 
         
