@@ -2,6 +2,7 @@ import sys
 import os
 import random
 import math
+import time
 x = 0
 f = open('char.txt',  'x')
 typelist = ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma']
@@ -99,6 +100,7 @@ range: {ranges}
         ''')
         y -= 1
 def mainstat():
+    print('Making stats...')
     global x
     while x != 6:
         typ = typelist[x]
@@ -176,7 +178,8 @@ def stats():
     f.write('\n')
 
 def init():           
-
+    f.write("Dungeons & Dragons Character Sheet")
+    f.write('This sheet was created by the dndsheetmaker by RobiTheGit a.k.a. RobiWanKenobi')
     bkg()
     skills()
     items()
@@ -184,6 +187,8 @@ def init():
     spells()
     traits()
     weapons()
-    print("Look for char.txt, rename it before you run it again, otherwise you will get a FileExists error")
-    
+    f.write('© RobiTheGit 2022')
+    print("Look for char.txt, rename or delete it before you run this script again, otherwise you will get a FileExists error")
+    time.sleep(3)
+    sys.exit(0)
 init()
