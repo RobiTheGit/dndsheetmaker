@@ -5,6 +5,9 @@ import math
 import time
 x = 0
 f = open('char.txt',  'x')
+if os.path.exists("char.txt"):
+    print('char.txt exists, please remove the file after copying the info to another file')
+    sys.exit(0)
 typelist = ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma']
 def traits():
     z = input('How many traits do you have? ')
@@ -179,16 +182,18 @@ def stats():
 
 def init():           
     f.write("Dungeons & Dragons Character Sheet")
+    f.write('\n')
     f.write('This sheet was created by the dndsheetmaker by RobiTheGit a.k.a. RobiWanKenobi')
     bkg()
     skills()
-    items()
+    traits()
     stats()
     spells()
-    traits()
+    items()
     weapons()
+    f.write('\n')
     f.write('© RobiTheGit 2022')
-    print("Look for char.txt, rename or delete it before you run this script again, otherwise you will get a FileExists error")
-    time.sleep(3)
+    print("Look for char.txt, rename or delete it before you run this script again, otherwise you will get a error, mainly so you don't overwrite this information")
+    time.sleep(2)
     sys.exit(0)
 init()
