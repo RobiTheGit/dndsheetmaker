@@ -194,7 +194,7 @@ def init():
     weapons()
     f.write('\n')
     f.write('© RobiTheGit 2022')
-    print("Look for char.txt, rename or delete it before you run this script again, otherwise you will get a error, mainly so you don't overwrite this information")
+    print("Look for char.txt, rename or delete it before you run this script again, otherwise you will get a error, mainly so you don't overwrite the sheet")
     time.sleep(2)
     sys.exit(0)
 init()
